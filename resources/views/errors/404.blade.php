@@ -9,19 +9,23 @@
 <style>
 
 </style>
-<section class="banner-sec thank-sec common-text sandk-common-padding sandk-common error-page" style="background-image: url({{ asset('front-assets/src/images/residential-images/Residential-Garage-Doors-banner.webp') }});">
-                <!-- Your existing banner content goes here -->
-                <div class="banner-content-text">
-                    <div class="container-md">
-                        <div class="row align-items-center">
-                            <div class="col-xxl-7 col-xl-7 col-lg-10 col-md-12 col-sm-12 col-12 banner-left-sec justify-content-center align-items-center">
-                                <h2 class="desktop-heading">404 Page not found</h2>
-                                <h2 class="mobile-heading">404 Page <br>not found</h2>
-                                <p>The page you are looking for might have been removed had it’s name Changed or is temporarily unavailable.</p>
-                                <a href="{{route('home')}}" class="common-btn common-btn" id="common-btn">BACK TO HOME</a>
-                            </div>
-                        </div>
-                    </div>
+<section class="contact-banner-sec inner-service-banner thank-you-page">
+    
+        <img src="/front-assets/src/images/404-page-banner.jpg" alt="" class="img-fluid w-100  banner-img 3" width="1920" height="767">
+
+
+    <div class="banner-content col-12">
+        <div class="container-md">
+            <div class="row">
+                <div class="banner-text">
+                    
+                    <h1 class="desktop-heading">404 – Page Not Found</h1>
+                    <h1 class="mobile-heading">404 – Page <br> Not Found</h1>
+                    <p class="error-page-text">The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+                    <a href="{{route('home')}}" class="common-btn common-btn" id="common-btn">BACK TO HOME</a>
                 </div>
-            </section>
+            </div>
+        </div>
+    </div>
+</section>
 @endsection

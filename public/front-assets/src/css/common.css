@@ -231,7 +231,7 @@ form#ContactusForm .form-row .parsley-error {border-color: red;}
   --lh-nm: normal;
   
 }
-
+.common-btn { font-size: 18px;line-height: 28px;padding: 7px 28px;}
 .time-matter-common-padding { padding: 100px 0; }
 .time-matter-common h2{font-size: 36px;line-height: 54px;margin-bottom: 40px;} 
 
@@ -289,7 +289,11 @@ form#ContactusForm .form-row .parsley-error {border-color: red;}
   --lh-nm: normal;
   
 }
-
+.common-btn {
+        font-size: 18px;
+        line-height: 28px;
+        padding: 6px 22px;
+    }
 .time-matter-common-padding{padding: 80px 0;}
 .time-matter-common h2{font-size: 34px;line-height: 50px;margin-bottom: 40px;} 
 
@@ -350,7 +354,10 @@ form#ContactusForm .form-row .parsley-error {border-color: red;}
     --lh-sm: 22px;
 }
 
-
+.common-btn {
+        font-size: 18px;
+        padding: 10px 22px;
+    }
 
 .desktop-img{display: none;}
 .mobile-img{display: block;margin-bottom: 30px;}
@@ -503,4 +510,69 @@ form#ContactusForm .form-row small{height: 15px;}
 @media (max-width:429px) {
   .time-matter-common h2{text-wrap-style: pretty;}
   
+}
+
+.common-btn {
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 28px;
+    padding: 15px 30px;
+    background-color: #F2A900 !important;
+    color: #00308c !important;
+    position: relative !important;
+    text-align: center !important;
+    border-radius: 7px;
+    margin-top: 30px;
+    transition: all 0.3s ease-out;
+    border: 0 !important;
+    display: inline-block;
+    font-family: 'Raleway', sans-serif;
+}
+
+.common-btn:hover {
+    background-color: #ffc94c !important
+}
+
+.fa-angle-icon {
+    background: url(../images/up-arrow.webp);
+    background-size: 23px;
+    background-position: 6.5px 13px;
+    background-repeat: no-repeat;
+    width: 36px;
+    line-height: 36px;
+    display: block;
+    height: 36px;
+    border-radius: 50%;
+    text-align: center;
+    background-color: #e3e3e37d
+}
+
+.common-btn .hover-icon {
+    display: inline-block;
+    margin-right: 0;
+    width: 35px;
+    padding-right: 10px
+}
+
+.common-btn:hover {
+    background-color: #ffc94c !important;
+}
+
+.common-btn {
+    display: inline-block;
+    margin: 30px auto 0;
+    
+}
+
+.banner-text {
+    text-align: center;
+}
+
+@media (min-width: 1500px) and (max-width: 1797px) {
+    .common-btn {
+        font-size: 18px;
+        line-height: 28px;
+        padding: 12px 36px;
+    }
 }

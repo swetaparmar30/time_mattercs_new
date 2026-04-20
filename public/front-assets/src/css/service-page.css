@@ -447,7 +447,11 @@
 
 @media (min-width: 1200px) and (max-width: 1399.99px) {
 
-
+    .common-btn{
+  font-size: 18px;
+    line-height: 28px;
+    padding: 6px 22px;
+}
     .inner-service-banner .banner-content .banner-text h1 {
         font-size: 52px;
         line-height: 60px;
@@ -1336,8 +1340,8 @@
     } */
 .contact-banner-sec.inner-service-banner .banner-content .banner-text p br{display: none;}
 .contact-banner-sec.inner-service-banner .banner-content .banner-text p:last-of-type{display: none;}
-
- .blue-oragnization-work-box h2{text-wrap-style: balance;}
+.contact-banner-sec.inner-service-banner.thank-you-page .banner-content .banner-text p:last-of-type{display: block;}
+.blue-oragnization-work-box h2{text-wrap-style: balance;}
 }
 
 
@@ -1354,3 +1358,4 @@
  .contact-page-form-sec .left-side .main-info-box{padding: 40px 14px;}
 
 }
+

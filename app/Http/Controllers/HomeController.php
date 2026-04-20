@@ -267,4 +267,8 @@ class HomeController extends Controller
         return response()->view('frontend.sitemap_xml', compact('pages', 'posts'))->header('Content-Type', 'application/xml');
     }
     
+    public function thankyou()
+    {
+        return view('frontend.thankyou');
+    }
 }
