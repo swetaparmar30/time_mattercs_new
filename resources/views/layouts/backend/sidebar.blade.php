@@ -218,7 +218,12 @@
                                      class="feather icon-clock"></i></span><span class="pcoded-mtext">Role Category</span></a>
                     </li>
 
-
+                     <li data-username="dashboard"
+                        class="nav-item {{ \Request::route()->getName() == 'centralfile.index' || \Request::route()->getName() == 'centralfile.add' || \Request::route()->getName() == 'centralfile.edit' ? 'active' : '' }}">
+                        <a href="{{ route('centralfile.index') }}" class="nav-link "><span class="pcoded-micon"><i
+                                     class="feather icon-file"></i></span><span class="pcoded-mtext">Central Files</span></a>
+                    </li>
+                    
                     <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project"
                         class="nav-item {{ \Request::route()->getName() == 'faqs.index' || \Request::route()->getName() == 'faqs.add' || \Request::route()->getName() == 'faqs.edit' ? 'active' : '' }}">
                         <a href="{{ route('faqs.index') }}" class="nav-link "><span class="pcoded-micon"><i

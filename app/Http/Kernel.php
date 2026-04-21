@@ -59,6 +59,7 @@ class Kernel extends HttpKernel
         'checkRole' => \App\Http\Middleware\CheckRole::class, 
         'role' => \App\Http\Middleware\RoleMiddleware::class,
         'authorize.login' => \App\Http\Middleware\CheckUserAccess::class,
+        'authorize.frontend.login' => \App\Http\Middleware\ValidateLoginAccess::class,
 
         // Other route middleware...
     ];

@@ -37,6 +37,7 @@
                                                             <?php echo e($selectedName == 'independent-contractor' ? 'selected' : ''); ?>> Independent Contractor </option>
                                                         <option value="temporary-employee"
                                                             <?php echo e($selectedName == 'temporary-employee' ? 'selected' : ''); ?>> Temporary Employee </option>
+                                                        <option value="vendor" <?php echo e($selectedName == 'vendor' ? 'selected' : ''); ?>> Vendor </option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -87,7 +88,7 @@
                                 </div>
 
                                 <!-- Image Section -->
-                                <div
+                                  <div
                                     class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 add-article form-main-sec right-sec">
                                     <div class="card Recent-Users">
                                         <h5>Image</h5>
@@ -95,30 +96,34 @@
                                             <div class="row form-sec">
                                                 <div class="col-12">
 
-                                                    <?php if(isset($role_img) && $role_img && $role_img->name): ?>
-                                                        <input type="hidden" name="old_image"
-                                                            value="<?php echo e($role_img->name); ?>">
-                                                    <?php endif; ?>
-
                                                     <div class="upload-img-sec text-center">
-                                                        <img id="role_image_avtar"
-                                                            src="<?php echo e(isset($role_img) && $role_img && $role_img->name
-                                                                ? asset('uploads/' . $role_img->name)
-                                                                : asset('assets/images/user/img-demo_1041.jpg')); ?>"
-                                                            style="width:250px; height:120px; object-fit: cover;"
-                                                            class="img-fluid profile_avtar">
-
-                                                        <a id="role_image_remove_image"
-                                                            style="<?php echo e(isset($role_img) && $role_img && $role_img->name ? '' : 'display:none;'); ?>">
-                                                            <i class="fa fa-times"></i>
-                                                        </a>
-
-                                                        <label for="role_img" style="cursor:pointer;"
-                                                            class="form-label upload_image">
-                                                            Choose image
-                                                        </label>
-                                                        <input type="file" name="role_img" id="role_img" class="d-none"
-                                                            accept="image/*">
+                                                        <input type="hidden" name="role_img" id="role_img"
+                                                            value="<?php echo e(isset($role_img) && $role_img && $role_img->id ? $role_img->id : ''); ?>">
+                                                            
+                                                        <?php if(isset($role_img) && $role_img && $role_img->name): ?>
+                                                            <div class="image_preview_div" style="position: relative; display: inline-block;">
+                                                                <img id="role_image_avtar"
+                                                                    src="<?php echo e(asset('uploads/' . $role_img->name)); ?>"
+                                                                    style="object-fit: cover; max-width: 200px; max-height: 200px;"
+                                                                    class="img-fluid profile-img">
+                                                                <a id="role_image_remove_image" style="position: absolute; top: 0; right: 0;">
+                                                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                                                </a>
+                                                            </div>
+                                                        <?php else: ?>
+                                                            <div class="image_preview_div" style="position: relative; display: inline-block;">
+                                                                <img src="<?php echo e(asset('assets/images/user/img-demo_1041.jpg')); ?>" alt="" 
+                                                                    id="role_image_avtar" class="img-fluid profile-img"
+                                                                    style="object-fit: cover; max-width: 200px; max-height: 200px;">
+                                                                <a id="role_image_remove_image" style="display: none; position: absolute; top: 0; right: 0;"> 
+                                                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                                                </a>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                        
+                                                        <label for="" style="cursor: pointer; display: block; margin-top: 10px;"
+                                                            class="choose_file hm-choose-img-title w-100"
+                                                            data-val="role_img">Choose image</label>
                                                     </div>
                                                 </div>
                                             </div>

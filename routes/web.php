@@ -97,7 +97,7 @@ Route::post('/register', [FrontendRegisterController::class, 'store'])->name('fr
 
 // Login Routes
 Route::get('/login', [FrontendLoginController::class, 'index'])->name('frontend.login');
-Route::post('/login', [FrontendLoginController::class,  'login'])->name('frontend.login.store');
+Route::post('/login', [FrontendLoginController::class,  'login'])->name('frontend.login.store')->middleware('authorize.frontend.login');
 Route::post('/logout', [FrontendLoginController::class,  'logout'])->name('frontend.logout')->middleware('auth');
 
 
@@ -317,7 +317,14 @@ Route::prefix('admin')->group(function () {
         Route::post('/change_status', [RoleCategoryController::class, 'change_status'])->name('role-category.change_status');
     });
 
-
+    Route::group(['prefix' => 'central-files', 'middleware' => ['auth', 'role:administrator,marketing']], function () {
+        Route::get('/', [App\Http\Controllers\Backend\CentralFileController::class, 'index'])->name('centralfile.index');
+        Route::get('/add', [App\Http\Controllers\Backend\CentralFileController::class, 'add'])->name('centralfile.add');
+        Route::post('/store', [App\Http\Controllers\Backend\CentralFileController::class, 'store'])->name('centralfile.store');
+        Route::post('/list', [App\Http\Controllers\Backend\CentralFileController::class, 'list'])->name('centralfile.list');
+        Route::get('/edit/{id}', [App\Http\Controllers\Backend\CentralFileController::class, 'edit'])->name('centralfile.edit');
+        Route::get('/delete/{id}', [App\Http\Controllers\Backend\CentralFileController::class, 'delete'])->name('centralfile.delete');
+    });
 
     // Location
 

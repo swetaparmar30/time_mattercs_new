@@ -347,6 +347,9 @@
                     if (val == 'banner_image' && val != 'undefined') {
                         $('#type_id').val(val);
                     }
+                    if (val == 'role_img' && val != 'undefined') {
+                        $('#type_id').val(val);
+                    }
                     if (val != 'undefined' && data_id != 'undefined') {
                         $('#type_id').val(val);
                         $('#data_id').val(data_id);
@@ -550,9 +553,8 @@
                     }
                     if (type_id == 'sec3_image_4' && type_id != 'undefined' && type_id != '') {
                         var sec3_image_4 = true;
-                    }
-                     if (type_id == 'role_image' && type_id != 'undefined' && type_id != '') {
-                        var role_image = true;
+
+
                     }
 
 
@@ -583,6 +585,10 @@
                     }
                     if (type_id == 'mainsecimg' && type_id != 'undefined' && type_id != '') {
                         var main_sec = true;
+                    }
+                    var role_img = false;
+                    if (type_id == 'role_img' && type_id != 'undefined' && type_id != '') {
+                        var role_img = true;
                     }
                     if (type_id == 'footer_profile_avtar' && type_id != 'undefined' && type_id != '') {
                         var footer_sec = true;
@@ -624,6 +630,10 @@
                                 $('#main_sec_img').val(details.id);
                                 $('#sec_avtar').attr('src', imageUrl);
                                 $('#remove_main_sec_image').css('display', 'block');
+                            } else if (role_img) {
+                                $('#role_img').val(details.id);
+                                $('#role_image_avtar').attr('src', imageUrl);
+                                $('#role_image_remove_image').css('display', 'block');
                             } else if (footer_sec) {
                                 $('#footer_img_id').val(details.id);
                                 $('#footer_profile_avtar').attr('src', imageUrl);
@@ -795,11 +805,6 @@
                                 $('#banner_image_id').val(details.id);
                                 $('#banner_image_avtar').attr('src', imageUrl);
                                 $('#remove_banner_image').css('display', 'block');
-                            }
-                             else if (role_image) {
-                                $('#role_image').val(details.id);
-                                $('#role_image_avtar').attr('src', imageUrl);
-                                $('#role_image_remove_image').css('display', 'block');
                             }
                             
                              else if (abt_mb_bannerimage) {

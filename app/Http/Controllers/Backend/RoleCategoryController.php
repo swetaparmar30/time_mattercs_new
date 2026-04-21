@@ -24,8 +24,6 @@ class RoleCategoryController extends Controller
         return view('role_category.add');
     }
 
-
-
     public function store(Request $request)
     {
         $request->validate([
@@ -34,7 +32,7 @@ class RoleCategoryController extends Controller
             'description' => 'required|string',
             'button_text' => 'required|string|max:100',
             'button_url'  => 'nullable|url',
-            'role_img'    => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'role_img'    => 'nullable',
         ]);
 
         $id = $request->role_category_id;
@@ -46,25 +44,20 @@ class RoleCategoryController extends Controller
             $data->created_by = auth()->id();
         }
 
-        // ✅ Image Upload Logic (MediaImage table)
-        if ($request->hasFile('role_img')) {
-
-            $file = $request->file('role_img');
-            $filename = time().'_'.$file->getClientOriginalName();
-
-            // Upload folder (public/uploads)
-            $file->move(public_path('uploads'), $filename);
-
-            // Save in MediaImage table
-            $media = new MediaImage();
-            $media->name = $filename;
-            $media->save();
-
-            // Save reference in RoleCategory
-            $data->image = $filename;
-
+        // Media Library Image selection logic
+        if ($request->has('role_img') && !empty($request->role_img)) {
+            // If it's a media ID
+            $media = MediaImage::find($request->role_img);
+            if ($media) {
+                $data->image = $media->name;
+            } else {
+                $data->image = $request->role_img;
+            }
+        } else if ($request->has('role_img') && empty($request->role_img)) {
+            // If user removed the image
+            $data->image = null;
         } else {
-            // Old image keep
+            // Fallback for old behaviour or unmodified states
             if ($request->old_image) {
                 $data->image = $request->old_image;
             }
