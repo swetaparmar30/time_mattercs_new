@@ -155,7 +155,7 @@ Route::middleware('auth')->group(function () {
 Route::prefix('admin')->group(function () {
 
     Route::get('login', [LoginController::class, 'index'])->name('login');
-    Route::post('custom-login', [LoginController::class, 'customLogin'])->name('custom.login');
+    Route::post('custom-login', [LoginController::class, 'customLogin'])->name('custom.login')->middleware('authorize.login');
     Route::get('reset-password-link', [LoginController::class, 'send_link_reset_view'])->name('reset.pass.link.view');
     Route::post('reset-password-link-send', [LoginController::class, 'send_link_reset'])->name('reset.pass.link');
     Route::get('reset-password-store-view/{token}', [LoginController::class, 'reset_pass_store_view'])->name('reset.pass.store.view');
