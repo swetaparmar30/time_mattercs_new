@@ -62,6 +62,9 @@ class LoginController extends Controller
 
             'Temporary Employee'     => redirect()->route('frontend.temporary-employee.dashboard')
                                         ->with('success', 'Welcome Temporary Employee!'),
+                                        
+            'Vendor'                 => redirect()->route('frontend.vendor.dashboard')
+                                        ->with('success', 'Welcome Vendor!'),
 
             default => redirect()->route('dashboard')
                       ->with('success', 'Login successful!'),

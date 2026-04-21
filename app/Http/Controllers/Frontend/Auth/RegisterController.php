@@ -27,8 +27,9 @@ class RegisterController extends Controller
             'email'        => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone'        => ['required', 'string', 'max:20'],        
             'name'      => ['nullable', 'string', 'max:255'],
-            'role'         => ['required', 'string', 'in:Independent Contractor,Temporary Employee'], // Updated
+            'role'         => ['required', 'string', 'in:Independent Contractor,Temporary Employee,Vendor'], // Updated
             'password'     => ['required', 'confirmed', Password::defaults()],
+            'termsAccepted' => ['accepted'],
         ]);
 
         $user = User::create([
@@ -52,12 +53,13 @@ class RegisterController extends Controller
 
     
 
-    protected function redirectToDashboard(User $user): RedirectResponse
-    {
-        return match ($user->role) {
-            'Independent Contractor' => redirect()->route('independent-contractor.dashboard'),
-            'Temporary Employee'     => redirect()->route('temporary-employee.dashboard'),
-            default => redirect()->route('dashboard'),
-        };
-    }
+    // protected function redirectToDashboard(User $user): RedirectResponse
+    // {
+    //     return match ($user->role) {
+    //         'Independent Contractor' => redirect()->route('independent-contractor.dashboard'),
+    //         'Temporary Employee'     => redirect()->route('temporary-employee.dashboard'),
+    //         'Vendor'                 => redirect()->route('vendor.dashboard'),
+    //         default => redirect()->route('dashboard'),
+    //     };
+    // }
 }

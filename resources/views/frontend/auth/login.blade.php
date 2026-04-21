@@ -1,159 +1,129 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TimeMatters - Login</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      background: #1e40af;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: system-ui, -apple-system, sans-serif;
-    }
-    .login-card {
-      background: white;
-      border-radius: 16px;
-      max-width: 480px;
-      width: 100%;
-      padding: 40px 50px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 30px;
-    }
-    .tm-logo {
-      width: 48px;
-      height: 48px;
-      background: #1e40af;
-      color: white;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 26px;
-    }
-    .form-label {
-      font-size: 14px;
-      font-weight: 500;
-      color: #333;
-      margin-bottom: 6px;
-    }
-    .form-control {
-      border-radius: 8px;
-      padding: 12px 14px;
-      border: 1px solid #d1d5db;
-      font-size: 15px;
-    }
-    .form-control:focus {
-      border-color: #3b82f6;
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
-    }
-    .btn-login {
-      background: #1e40af;
-      color: white;
-      border: none;
-      padding: 14px;
-      font-size: 16px;
-      font-weight: 600;
-      border-radius: 8px;
-      margin-top: 20px;
-    }
-    .btn-login:hover {
-      background: #1e3a8a;
-    }
-    .register-link {
-      color: #3b82f6;
-      text-decoration: none;
-    }
-    .register-link:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-<body>
+@extends('frontend.layouts.app')
 
-  <div class="login-card">
-    <!-- Logo -->
-    <div class="logo">
-      <div class="tm-logo">TM</div>
-      <div>
-        <h4 class="mb-0 fw-bold text-dark">TimeMatters</h4>
-        <small class="text-muted" style="font-size: 12px;">INC</small>
-      </div>
-    </div>
+@section('title', 'Login | TimeMatters')
 
-    <h3 class="text-center mb-1 fw-semibold">Welcome Back</h3>
-    <p class="text-center text-muted mb-4">Sign in to your account</p>
+@section('content')
+  <body class="auth-page login-page">
+    <main class="auth-card">
+      <img
+        class="auth-logo"
+        src="/front-assets/src/images/Time-matters-header-logo.webp"
+        alt="TimeMatters logo"
+        width="350"
+        height="84"
+      >
 
-    @if (session('success'))
-        <div class="alert alert-success text-center">
-            {{ session('success') }}
-        </div>
-    @endif
+      <section id="login-section">
+        <header class="auth-header">
+          <h1 class="auth-title">Welcome Back</h1>
+          <p class="auth-subtitle">Sign in to access your account</p>
+        </header>
 
-    <form method="POST" action="{{ route('frontend.login.store') }}">
-        @csrf
+          <form method="POST" action="{{ route('frontend.login.store') }}">
+          @csrf
 
-        <div class="mb-3">
-            <label class="form-label">Email Address</label>
-            <input type="email" 
-                   name="email" 
-                   class="form-control @error('email') is-invalid @enderror" 
-                   placeholder="Enter your email address" 
-                   value="{{ old('email') }}" 
-                   required autofocus>
+          <div class="form-field">
+            <label class="form-label" for="login-email">Email</label>
+            <input
+              class="form-control @error('email') is-invalid @enderror" 
+              type="email"
+              id="login-email" value="{{ old('email') }}"
+              name="email"
+              placeholder="Enter your mail address"
+              autocomplete="email"
+            >
             @error('email')
                 <span class="invalid-feedback">{{ $message }}</span>
             @enderror
-        </div>
+          </div>
 
-        <div class="mb-3">
-            <label class="form-label">Password</label>
-            <input type="password" 
-                   name="password" 
-                   class="form-control @error('password') is-invalid @enderror" 
-                   placeholder="Enter your password" 
-                   required>
-            @error('password')
+          <div class="form-field">
+            <label class="form-label" for="login-password">Password</label>
+            <input
+              class="form-control @error('password') is-invalid @enderror" 
+              type="password"
+              id="login-password"
+              name="password"
+              placeholder="********"
+              autocomplete="current-password"
+            >
+             @error('password')
                 <span class="invalid-feedback">{{ $message }}</span>
             @enderror
-        </div>
+          </div>
 
-        <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" name="remember" id="remember">
-            <label class="form-check-label" for="remember">
-                Remember me
+          <div class="auth-options">
+            <label class="checkbox-group">
+              <input type="checkbox" id="remember-me" name="rememberMe">
+              <span>Remember me</span>
             </label>
-        </div>
+            <button type="button" class="auth-link forgot-password forgot-password-toggle" id="open-forgot-password">
+              Forgot your password?
+            </button>
+          </div>
 
-        <button type="submit" class="btn btn-login w-100">
-            Login
-        </button>
-    </form>
+          <button class="btn-primary" type="submit">Log in</button>
+        </form>
 
-    <div class="text-center mt-4">
-        <small class="text-muted">
-            Don't have an account? 
-            <a href="{{ route('frontend.register.store') }}" class="register-link fw-medium">Register here</a>
-        </small>
-    </div>
+        <p class="auth-footer-text">
+          Don't have an account?
+          <a class="auth-link" href="{{ route('frontend.register.store') }}"><strong>Register here</strong></a>
+        </p>
+      </section>
 
-    <div class="text-center mt-3">
-        <small>
-            <a href="#" class="text-muted">Forgot Password?</a>
-        </small>
-    </div>
-  </div>
+      <section id="forgot-password-section" class="auth-panel-hidden">
+        <header class="auth-header">
+          <h1 class="auth-title">Forgot Password</h1>
+          <p class="auth-subtitle">Enter your email to receive a reset link</p>
+        </header>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+        <form class="auth-form" action="#" method="post" novalidate>
+          <div class="form-field">
+            <label class="form-label" for="reset-email">Email</label>
+            <input
+              class="form-control"
+              type="email"
+              id="reset-email"
+              name="resetEmail"
+              placeholder="Enter your mail address"
+              autocomplete="email"
+              required
+            >
+          </div>
+
+          <button class="btn-primary" type="submit">Send Reset Link</button>
+        </form>
+
+        <p class="auth-footer-text">
+          Remembered your password?
+          <button type="button" class="auth-link back-to-login-btn" id="back-to-login">
+           <strong>Back to Login</strong>
+          </button>
+        </p>
+      </section>
+    </main>
+    <script>
+      (function () {
+        var loginSection = document.getElementById("login-section");
+        var forgotSection = document.getElementById("forgot-password-section");
+        var openForgotBtn = document.getElementById("open-forgot-password");
+        var backToLoginBtn = document.getElementById("back-to-login");
+
+        if (!loginSection || !forgotSection || !openForgotBtn || !backToLoginBtn) {
+          return;
+        }
+
+        openForgotBtn.addEventListener("click", function () {
+          loginSection.classList.add("auth-panel-hidden");
+          forgotSection.classList.remove("auth-panel-hidden");
+        });
+
+        backToLoginBtn.addEventListener("click", function () {
+          forgotSection.classList.add("auth-panel-hidden");
+          loginSection.classList.remove("auth-panel-hidden");
+        });
+      })();
+    </script>
+  </body>
 </html>
+@endsection
