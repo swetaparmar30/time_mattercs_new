@@ -40,6 +40,15 @@ class LoginController extends Controller
             $request->session()->regenerate();
 
             $user = Auth::guard('web')->user();
+            
+             if ($user->status == 0) {
+                Auth::logout();
+
+                return back()
+                       ->withErrors(['email' => 'Your account is pending admin approval. Please wait for activation.'])
+                       ->withInput($request->only('email'));
+            }
+
 
             // Redirect to Role-based Dashboard
             return $this->redirectToDashboard($user);

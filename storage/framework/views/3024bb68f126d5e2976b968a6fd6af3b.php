@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('title', 'Temporary Employee Portal - TimeMatters'); ?>
 
 <?php $__env->startSection('content'); ?>
