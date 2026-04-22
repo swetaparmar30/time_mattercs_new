@@ -8,8 +8,8 @@
                   <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                      <div class="card Recent-Users mb-4">
                         <div class="card-header">
-                           <h5>Garage Services</h5>
-                           <a href="<?php echo e(route('garage-services.add')); ?>" class="add-article-btn">Add Garage Door</a>
+                           <h5>Collections</h5>
+                           <a href="<?php echo e(route('collection.add')); ?>" class="add-article-btn">Add Collection</a>
                         </div>
                         <div class="card-body">
                            <div class="example">
@@ -19,8 +19,10 @@
                                        <thead>
                                           <tr class="unread">
                                              <th scope="col">#</th>
+                                             <th scope="col">Name</th>
+                                             <th scope="col">Type</th>
                                              <th scope="col">Title</th>
-                                             <th scope="col">Descripion</th>
+                                             <th scope="col">Description</th>
                                              <th scope="col">Action</th>
                                           </tr>
                                        </thead>
@@ -45,7 +47,7 @@
    $(document).ready(function() {
        var token = $("meta[name='csrf-token']").attr("content");
        var table = $('#myTable').DataTable({
-            language: {
+           language: {
                search: "",
                "searchPlaceholder": "Search",
                "processing": '<i class="fa fa-spinner fa-spin" style="font-size:24px;color:rgb(75, 183, 245);"></i>',
@@ -58,26 +60,31 @@
            autoWidth: false,
            columnDefs: [
                { 
-                    targets: [0,3],
+                   targets: [0, 3],
                     orderable: false,
                },
                {
-                   width: '5%', targets: 0 
+                   width: '1%', targets: 0 
                },
                {
-                   width: '20%', targets: 1 
+                   width: '10%', targets: 1 
                },
                {
-                   width: '40%', targets: 2 
+                   width: '8%', targets: 2 
                },
                {
-                   width: '20%', targets: 3 
+                   width: '11%', targets: 3
+               },
+               {
+                   width: '19%', targets: 4
+               },
+               {
+                   width: '8%', targets: 5
                }
-               
               
            ],
            ajax: {
-               url: admin_url + "list-garage-services",
+               url: admin_url + "list-collection",
                type: 'post',
                data: {
                    _token: token,
@@ -93,13 +100,22 @@
                    name: 'title'
                },
                {
-                   data: 'description',
-                   name: 'description'
+                   data: 'type',
+                   name: 'type'
+               },
+               {
+                   data: 'sub_title',
+                   name: 'sub_title'
+               },
+                {
+                   data: 'short_description',
+                   name: 'short_description'
                },
                {
                    data: 'action',
                    name: 'Action'
-               }    
+               }
+               
            ]
        });
    })
@@ -110,7 +126,7 @@
        var deleteUrl = $(this).data('href');
        Swal.fire({
            title: 'Are you sure?',
-           text: 'You are about to delete the Garage Door!',
+           text: 'You are about to delete the Products Services!',
            icon: 'warning',
            showCancelButton: true,
            confirmButtonColor: '#3085d6',
@@ -125,4 +141,4 @@
    });
 </script>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.backend.index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\time_mattercs_new\resources\views/garage-services/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.backend.index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\time_mattercs_new\resources\views/collection/index.blade.php ENDPATH**/ ?>

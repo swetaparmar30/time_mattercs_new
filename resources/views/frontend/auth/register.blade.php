@@ -71,9 +71,9 @@
                         <label class="form-label" for="role">Role</label>
                         <select name="role" class="form-control @error('role') is-invalid @enderror" >
                         <option value="">Select your role</option>
-                        <option value="Independent Contractor" {{ old('role') == 'Independent Contractor' ? 'selected' : '' }}>Independent Contractor </option>
-                        <option value="Temporary Employee" {{ old('role') == 'Temporary Employee' ? 'selected' : '' }}> Temporary Employee </option>
-                        <option value="Vendor" {{ old('role') == 'Vendor' ? 'selected' : '' }}> Vendor </option>
+                        <option value="independent-contractor" {{ old('role') == 'independent-contractor' ? 'selected' : '' }}>Independent Contractor </option>
+                        <option value="temporary-employee" {{ old('role') == 'temporary-employee' ? 'selected' : '' }}> Temporary Employee </option>
+                        <option value="vendor" {{ old('role') == 'vendor' ? 'selected' : '' }}> Vendor </option>
                       </select>
                       @error('role')
                         <span class="invalid-feedback">{{ $message }}</span>

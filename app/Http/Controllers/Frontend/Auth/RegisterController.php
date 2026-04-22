@@ -27,7 +27,7 @@ class RegisterController extends Controller
             'email'        => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone'        => ['required', 'string', 'max:20'],        
             'name'      => ['nullable', 'string', 'max:255'],
-            'role'         => ['required', 'string', 'in:Independent Contractor,Temporary Employee,Vendor'], // Updated
+            'role'         => ['required', 'string', 'in:independent-contractor,temporary-employee,vendor'], // Updated
             'password'     => ['required', 'confirmed', Password::defaults()],
             'termsAccepted' => ['accepted'],
         ]);

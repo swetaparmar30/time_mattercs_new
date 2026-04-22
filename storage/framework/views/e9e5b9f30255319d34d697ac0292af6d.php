@@ -148,9 +148,9 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" >
                         <option value="">Select your role</option>
-                        <option value="Independent Contractor" <?php echo e(old('role') == 'Independent Contractor' ? 'selected' : ''); ?>>Independent Contractor </option>
-                        <option value="Temporary Employee" <?php echo e(old('role') == 'Temporary Employee' ? 'selected' : ''); ?>> Temporary Employee </option>
-                        <option value="Vendor" <?php echo e(old('role') == 'Vendor' ? 'selected' : ''); ?>> Vendor </option>
+                        <option value="independent-contractor" <?php echo e(old('role') == 'independent-contractor' ? 'selected' : ''); ?>>Independent Contractor </option>
+                        <option value="temporary-employee" <?php echo e(old('role') == 'temporary-employee' ? 'selected' : ''); ?>> Temporary Employee </option>
+                        <option value="vendor" <?php echo e(old('role') == 'vendor' ? 'selected' : ''); ?>> Vendor </option>
                       </select>
                       <?php $__errorArgs = ['role'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
